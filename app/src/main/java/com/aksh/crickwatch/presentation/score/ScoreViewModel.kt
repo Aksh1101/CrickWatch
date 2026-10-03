@@ -55,4 +55,29 @@ class ScoreViewModel @Inject constructor(
             }
         }
     }
+
+
+    fun refreshMatch(matchId: String) {
+        viewModelScope.launch {
+            try {
+                val response = repository.getCricketScores()
+
+                val match = response.data.firstOrNull {
+                    it.id == matchId
+                }
+
+                if (match != null) {
+                    _uiState.value = ScoreUiState.Success(match)
+                } else {
+                    _uiState.value =
+                        ScoreUiState.Error("Match not found")
+                }
+
+            } catch (e: Exception) {
+                _uiState.value = ScoreUiState.Error(
+                    e.message ?: "Unable to refresh score"
+                )
+            }
+        }
+    }
 }

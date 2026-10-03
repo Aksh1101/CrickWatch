@@ -1,6 +1,7 @@
 package com.aksh.crickwatch.presentation.home
 
 
+import android.R
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
@@ -16,6 +17,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -65,7 +67,8 @@ fun LoadingScreen() {
 
         Text(
             text = "Loading matches...",
-            modifier = Modifier.padding(top = 8.dp)
+            modifier = Modifier.padding(top = 8.dp),
+            color = Color.White
         )
     }
 }
@@ -126,15 +129,9 @@ fun ErrorScreen(
     ) {
 
         Text(
-            text = "Unable to load matches"
+            text = "Unable to load matches",
+            color = Color.White
         )
 
-        Spacer(
-            modifier = Modifier.height(8.dp)
-        )
-
-        Text(
-            text = message
-        )
     }
 }

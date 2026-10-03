@@ -65,6 +65,18 @@ fun ScoreContent(
                 fontWeight = FontWeight.Bold
             )
 
+            if (match.ms != "fixture" && match.ms != "result") {
+                Spacer(
+                    modifier = Modifier.height(2.dp)
+                )
+
+                Text(
+                    text = "Scores auto-refresh every 2 min",
+                    color = Color.White,
+                    fontSize = 8.sp
+                )
+            }
+
             Spacer(
                 modifier = Modifier.height(10.dp)
             )

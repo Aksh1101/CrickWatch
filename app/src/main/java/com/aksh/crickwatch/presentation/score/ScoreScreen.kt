@@ -21,6 +21,8 @@ import androidx.compose.ui.unit.dp
 import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
 import coil3.compose.AsyncImage
+import kotlinx.coroutines.delay
+import kotlin.time.Duration.Companion.milliseconds
 
 @Composable
 fun ScoreScreen(
@@ -33,6 +35,16 @@ fun ScoreScreen(
 
     LaunchedEffect(matchId) {
         viewModel.getMatch(matchId)
+    }
+
+    LaunchedEffect(matchId) {
+
+        while (true) {
+
+            delay((2 * 60 * 1000L).milliseconds)
+
+            viewModel.refreshMatch(matchId)
+        }
     }
 
     when (val state = uiState) {
